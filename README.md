@@ -66,6 +66,10 @@ require 'corn'.setup {
   -- position of the floating window relative to current window
   ---@type 'NE' | 'NW' | 'SE' | 'SW'
   anchor = 'NE',
+  ---@type integer
+  col_offset = 0,
+  ---@type integer
+  row_offset = 0,
 
   -- a preprocessor function that takes a raw Corn.Item and returns it after modification, could be used for truncation or other purposes
   item_preprocess_func = function(item)

@@ -32,6 +32,10 @@ M.default_opts = {
 
   ---@type 'NE' | 'NW' | 'SE' | 'SW'
   anchor = 'NE',
+  ---@type integer
+  col_offset = 0,
+  ---@type integer
+  row_offset = 0,
 
   ---@param item Corn.Item
   ---@return Corn.Item
