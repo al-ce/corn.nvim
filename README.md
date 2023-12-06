@@ -39,10 +39,12 @@ require 'corn'.setup {
   -- enables plugin auto commands
   auto_cmds = true,
 
-  -- sorts diagnostics according to a criteria. must be one of `severity`, `severity_reverse`, `column`, `column_reverse`, `line_number` or `line_number_reverse`
+  -- sorts diagnostics according to a criteria
+  ---@type 'col' | 'col_reverse' | 'severity' | 'severity_reverse' | 'line_number' | 'line_number_reverse
   sort_method = 'severity',
 
-  -- sets the scope to be searched for diagnostics, must be one of `line` or `file`
+  -- sets the scope to be searched for diagnostics
+  ---@type 'line' | 'file'
   scope = 'line',
 
   -- highlights to use for each diagnostic severity level
@@ -60,6 +62,10 @@ require 'corn'.setup {
     hint = "H",
     info = "I",
   },
+
+  -- position of the floating window relative to current window
+  ---@type 'NE' | 'NW' | 'SE' | 'SW'
+  anchor = 'NE',
 
   -- a preprocessor function that takes a raw Corn.Item and returns it after modification, could be used for truncation or other purposes
   item_preprocess_func = function(item)

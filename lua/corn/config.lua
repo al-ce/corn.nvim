@@ -7,10 +7,10 @@ M.default_opts = {
   ---@type boolean
   auto_cmds = true,
 
-  ---@type string
+  ---@type 'col' | 'col_reverse' | 'severity' | 'severity_reverse' | 'line_number' | 'line_number_reverse
   sort_method = 'severity',
 
-  ---@type string
+  ---@type 'line' | 'file'
   scope = 'line',
 
   ---@type { error: string, warn: string, hint: string, info: string, trunc: string }
@@ -29,6 +29,9 @@ M.default_opts = {
     info = "I",
     -- trunc = "...",
   },
+
+  ---@type 'NE' | 'NW' | 'SE' | 'SW'
+  anchor = 'NE',
 
   ---@param item Corn.Item
   ---@return Corn.Item
