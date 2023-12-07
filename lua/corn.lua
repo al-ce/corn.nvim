@@ -39,6 +39,7 @@ M.setup = function(opts)
     renderer.toggle(state)
     M.render()
   end
+
   vim.api.nvim_create_user_command("CornToggle", function(opts) M.toggle(opts.fargs[1]) end, { nargs = '?' })
 
   function M.scope(scope_type)
@@ -51,6 +52,7 @@ M.setup = function(opts)
       logger.error("invalid scope type")
     end
   end
+
   vim.api.nvim_create_user_command("CornScope", function(opts) M.scope(opts.fargs[1]) end, { nargs = 1 })
 
   function M.scope_cycle()
@@ -60,11 +62,13 @@ M.setup = function(opts)
     config.opts.scope = scope_types_lookup[new_scope_type_index]
     M.render()
   end
+
   vim.api.nvim_create_user_command("CornScopeCycle", M.scope_cycle, {})
 
   function M.render()
     renderer.render(utils.get_diagnostic_items())
   end
+
   vim.api.nvim_create_user_command("CornRender", M.render, {})
 end
 

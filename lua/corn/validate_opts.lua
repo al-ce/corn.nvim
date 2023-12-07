@@ -40,7 +40,7 @@ M.get_config_errs = function(opts)
   local sort_methods = { 'severity', 'column', 'line_number', 'severity_reverse', 'column_reverse', 'line_number_reverse' }
   valid_opt_val('sort_method', sort_methods, opts)
 
-  valid_opt_val('scope', {'line', 'file'}, opts)
+  valid_opt_val('scope', { 'line', 'file' }, opts)
 
   if opts.position then
     valid_opt_val('anchor', { 'NE', 'NW', 'SE', 'SW' }, opts.position)

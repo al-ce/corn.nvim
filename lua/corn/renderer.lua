@@ -7,10 +7,9 @@ M.bufnr = nil
 M.ns = nil
 M.win = nil
 M.is_visible = false -- used to determine if the window can be displayed
-M.is_hidden = false -- user controlled hiding toggle
+M.is_hidden = false  -- user controlled hiding toggle
 
 M.make_win_cfg = function(width, height)
-
   local position = config.opts.position
   local col = position.anchor:match('W') and 0 or vim.api.nvim_win_get_width(0)
   local row = position.anchor:match('N') and 0 or vim.api.nvim_win_get_height(0)
@@ -105,7 +104,7 @@ M.render = function(items)
         if config.opts.scope == 'line' then
           append_to_line(' ' .. ':' .. item.col, 'Comment')
         elseif config.opts.scope == 'file' then
-          append_to_line(' ' .. item.lnum+1 .. ':' .. item.col, 'Comment')
+          append_to_line(' ' .. item.lnum + 1 .. ':' .. item.col, 'Comment')
         end
       end
 
@@ -115,7 +114,7 @@ M.render = function(items)
       table.insert(item_lines, line)
 
       -- vertical truncation
-      if #item_lines == max_item_lines_count-1 then
+      if #item_lines == max_item_lines_count - 1 then
         line = ""
         -- local remaining_lines_count = item_lines_that_would_have_been_rendererd_if_there_was_enough_space_count - #item_lines
         append_to_line("... and more", "Folded")
@@ -128,12 +127,12 @@ M.render = function(items)
 
   -- calculate visibility
   if
-    -- items not zero
-    not M.is_hidden
-    -- user didnt hide it
-    and #items ~= 0
-    -- can fit in the width and height of the parent window
-    and vim.api.nvim_win_get_width(0) >= longest_line_len + 2 -- because of the borders
+  -- items not zero
+      not M.is_hidden
+      -- user didnt hide it
+      and #items ~= 0
+      -- can fit in the width and height of the parent window
+      and vim.api.nvim_win_get_width(0) >= longest_line_len + 2 -- because of the borders
   then
     M.is_visible = true
   else
@@ -159,7 +158,8 @@ M.render = function(items)
 
   -- apply highlights
   for i, hl_segment in ipairs(hl_segments) do
-    vim.api.nvim_buf_add_highlight(M.bufnr, M.ns, hl_segment.hl_group, hl_segment.lnum, hl_segment.col, hl_segment.end_col)
+    vim.api.nvim_buf_add_highlight(M.bufnr, M.ns, hl_segment.hl_group, hl_segment.lnum, hl_segment.col,
+      hl_segment.end_col)
   end
 end
 
