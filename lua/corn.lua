@@ -70,6 +70,20 @@ M.setup = function(opts)
   end
 
   vim.api.nvim_create_user_command("CornRender", M.render, {})
+
+  function M.anchor_cycle()
+    local position_opts = config.opts.position
+    if not position_opts then return end
+    local new_anchor = position_opts.anchor == "NE" and "SE" or "NE"
+    position_opts.row_offset = position_opts.row_offset * -1
+    position_opts.anchor = new_anchor
+
+    M.toggle("off")
+    M.toggle("on")
+  end
+
+  vim.api.nvim_create_user_command("CornAnchorCycle", M.anchor_cycle, {})
 end
+
 
 return M

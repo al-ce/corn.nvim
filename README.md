@@ -23,6 +23,7 @@ require 'corn'.toggle(state?)       -- toggle visiblity
 require 'corn'.scope(scope_type)    -- change scope type
 require 'corn'.scope_cycle()        -- cycle scope type
 require 'corn'.render()             -- manually invoke the renderer
+require 'corn'.anchor_cycle()       -- cycle anchor position
 ```
 or their vim cmds
 ```
@@ -30,6 +31,7 @@ or their vim cmds
 :CornScope
 :CornScopeCycle
 :CornRender
+:CornAnchorCycle
 ```
 
 ## Config
@@ -61,6 +63,7 @@ require 'corn'.setup {
     info = "I",
   },
 
+  -- position of the floating window
   position = {
     anchor = 'NE',  ---@type 'NE' | 'NW' | 'SE' | 'SW
     col_offset = 0, ---@type number
