@@ -11,16 +11,16 @@ M.is_hidden = false -- user controlled hiding toggle
 
 M.make_win_cfg = function(width, height)
 
-  local anchor = config.opts.anchor
-  local col = anchor:match('W') and 0 or vim.api.nvim_win_get_width(0) - 1
-  local row = anchor:match('N') and 0 or vim.api.nvim_win_get_height(0) - 1
+  local position = config.opts.position
+  local col = position.anchor:match('W') and 0 or vim.api.nvim_win_get_width(0)
+  local row = position.anchor:match('N') and 0 or vim.api.nvim_win_get_height(0)
 
   return {
     relative = "win",
     win = vim.api.nvim_get_current_win(),
-    anchor = anchor,
-    col = col + config.opts.col_offset,
-    row = row + config.opts.row_offset,
+    anchor = position.anchor,
+    col = col + position.col_offset,
+    row = row + position.row_offset,
     width = width <= 0 and 1 or width,
     height = height <= 0 and 1 or height,
     focusable = false,
